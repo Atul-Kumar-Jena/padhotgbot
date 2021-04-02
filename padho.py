@@ -2,8 +2,7 @@
 #Made By @ProgrammingError
 #Thanks To Google😂😂😂
 
-import os
-import requests
+import requests, random, os
 from decouple import config
 from telethon import Button, custom, events, functions, TelegramClient
 
