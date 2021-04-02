@@ -1,1 +1,1 @@
-NoobiezBots: python padho.py
+NoobiezBots: python3 padho.py
