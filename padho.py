@@ -5,6 +5,10 @@
 import requests, random, os
 from decouple import config
 from telethon import Button, custom, events, functions, TelegramClient
+import logging
+
+logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
+                    level=logging.WARNING)
 
 APP_ID = config("APP_ID", default=None, cast=int)
 API_HASH = config("API_HASH", default=None)
@@ -26,9 +30,8 @@ SEARCH_ENGINE_ID = "d99e58572df67b77a"
 
 @tgbot.on(events.InlineQuery(pattern=r"(.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
-    me = await borg.get_me()
     query = event.pattern_match.group(1)
-    if event.query.user_id == me.id:
+    if event.query.user_id:
         
         piggi = 1
         padhai = []
@@ -63,3 +66,5 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 )
             )
         await event.answer(padhai)
+
+tgbot.run_until_disconnected()
